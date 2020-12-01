@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/01 16:37:27 by zminhas          ###   ########.fr       */
+/*   Created: 2020/12/01 17:03:36 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/01 17:07:47 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.a"
-# include <stdarg.h>
+int		ft_intlen(int n)
+{
+	int		len;
 
-int		ft_printf(const char *format, ...);
-void	ft_convert_d_and_i(int d);
-
-#endif
+	len = (n < 0) ? 1 : 0;
+	while (nb /= 10)
+		len++;
+	return (++len);
+}

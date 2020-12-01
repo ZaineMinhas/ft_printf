@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_pourcent_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/01 16:37:27 by zminhas          ###   ########.fr       */
+/*   Created: 2020/12/01 17:29:55 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/01 17:31:43 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.a"
-# include <stdarg.h>
-
-int		ft_printf(const char *format, ...);
-void	ft_convert_d_and_i(int d);
-
-#endif
+int		ft_convert_c(unsigned char c)
+{
+	ft_putchar_fd(c);
+	return (1);
+}
