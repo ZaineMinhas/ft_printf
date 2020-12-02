@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pourcent_u.c                                    :+:      :+:    :+:   */
+/*   ft_pourcent_s.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 16:44:33 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/01 17:27:08 by zminhas          ###   ########.fr       */
+/*   Created: 2020/12/02 13:54:26 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/02 13:57:11 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_convert_u(int n)
+int		ft_convert_s(char *str)
 {
-	if (n > 0)
-	{
-		ft_putnbr_fd(n, 1);
-		return (ft_intlen(n));
-	}
-	
-
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
+}

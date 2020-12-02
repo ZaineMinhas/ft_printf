@@ -6,7 +6,7 @@
 #    By: zminhas <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 15:48:49 by zminhas           #+#    #+#              #
-#    Updated: 2020/11/30 17:14:39 by zminhas          ###   ########.fr        #
+#    Updated: 2020/12/02 13:34:14 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME):	${OBJS}
 		@ar -rcs ${NAME} ${OBJS}
 		@ranlib ${NAME}
 		@clear
-		@echo "${GREEN}libftprintd.a created !${RESET}"
+		@echo "${GREEN}libftprintf.a created !${RESET}"
 
 
 all:	${NAME}
