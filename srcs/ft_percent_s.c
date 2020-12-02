@@ -6,11 +6,11 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:54:26 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 17:01:59 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:26:55 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int		ft_convert_s(char *str)
 {

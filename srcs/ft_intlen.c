@@ -6,11 +6,11 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:03:36 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 17:02:07 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:26:44 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int		ft_intlen(int n)
 {

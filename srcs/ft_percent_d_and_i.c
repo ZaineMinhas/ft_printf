@@ -6,11 +6,11 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:31:21 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 17:01:48 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:26:15 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int		ft_convert_d_and_i(int n)
 {

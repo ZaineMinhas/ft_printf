@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 16:44:33 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 17:02:01 by zminhas          ###   ########.fr       */
+/*   Created: 2020/12/02 17:20:37 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/02 17:23:34 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
+#include <stdio.h>
 
 static	void	ft_putnbr_remix(unsigned int n)
 {
