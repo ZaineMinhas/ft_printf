@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:32:59 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 17:36:19 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:07:39 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		main(void)
 {
-//	printf("%x\n", 0);
-	ft_convert_x(0);
+	printf("%x\n", 27);
+	ft_convert_x(27);
 	return (0);
 }

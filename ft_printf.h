@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 15:37:31 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:50:41 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_convert_u(int n);
 int		ft_convert_c(int c);
 int		ft_convert_s(char *str);
 int		ft_convert_x(unsigned int n);
+int		ft_convert_xcap(unsigned int n);
 int		ft_intlen(int n);
 
 #endif

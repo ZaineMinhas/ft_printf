@@ -6,13 +6,36 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 17:27:15 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:25:58 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-/*int		ft_printf(const char *format, ...)
+static	int	ft_percent_all(const char *format)
+{
+	if (*format + 1 == 'd' || *format + 1 == 'i')
+		return (ft_convert_d_and_i());
+	if (*format + 1 == 'u')
+		return (ft_convert_u());
+	if (*format + 1 == 'x')
+		return (ft_convert_x());
+	if (*format + 1 == 'X')
+		return (ft_convert_xcap());
+	if (*format + 1 == 'c')
+		return (ft_convert_c());
+	if (*format + 1 == 's')
+		return (ft_convert_s());
+	if (*format + 1 == 'p')
+
+	if (*format + 1 == '%')
+	{
+		write(1, "%", 1);
+		return (1);
+	}
+}
+
+int		ft_printf(const char *format, ...)
 {
 	int		i;
 
@@ -20,31 +43,13 @@
 	while (*format)
 	{
 		if (*format == '%')
-		{
-			if (*format + 1 == 'd' || *format + 1 == 'i')
-				i += ft_convert_d_and_i();
-			if (*format + 1 == 'u')
-				i += ft_convert_u();
-//			if (*format + 1 == 'x' || *format + 1 == 'X')
-
-			if (*format + 1 == 'c')
-				i += ft_convert_c();
-			if (*format + 1 == 's')
-				i += ft_convert_s();
-//			if (*format + 1 == 'p')
-
-			if (*format + 1 == '%')
-			{
-				write(1, "%", 1);
-				i++;
-			}
-		}
+			i += ft_percent_all(format);
 		else
 		{
 			ft_putchar_fd(*format, 1);
 			i++;
 		}
-		*format++;
+	*format++;
 	}
 	return (i);
-}*/
+}
