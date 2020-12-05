@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/05 14:50:14 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/05 15:17:41 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static	int	ft_percent_all(const char *format, va_list args)
 {
 	if (*format + 1 == 'd' || *format + 1 == 'i')
-		return (ft_convert_d_and_i(args));
+		return (ft_percent_d_and_i(va_arg(args, int)));
 	if (*format + 1 == 'u')
-		return (ft_convert_u(args));
+		return (ft_percent_u(va_arg(args, unsigned int)));
 	if (*format + 1 == 'x')
-		return (ft_convert_x(args));
+		return (ft_percent_x(va_arg(args, unsigned int)));
 	if (*format + 1 == 'X')
-		return (ft_convert_xcap(args));
+		return (ft_percent_xcap(va_arg(args, unsigned int)));
 	if (*format + 1 == 'c')
-		return (ft_convert_c(args));
+		return (ft_percent_c(va_arg(args, int)));
 	if (*format + 1 == 's')
-		return (ft_convert_s(args));
+		return (ft_percent_s(va_arg(args, char *)));
 	if (*format + 1 == 'p')
 
 	if (*format + 1 == '%')
@@ -41,6 +41,7 @@ int		ft_printf(const char *format, ...)
 	va_list args;
 
 	i = 0;
+	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
