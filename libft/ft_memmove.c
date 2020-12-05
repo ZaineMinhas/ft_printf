@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 12:54:27 by zminhas           #+#    #+#             */
-/*   Updated: 2020/11/26 12:58:29 by zminhas          ###   ########.fr       */
+/*   Created: 2020/11/18 11:19:49 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/01 17:38:55 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (!lst)
-		return ;
-	del(lst->content);
-	free(lst);
+	unsigned const char *src2;
+	unsigned char		*dest2;
+	size_t				i;
+
+	if (!src && !dest)
+		return (NULL);
+	src2 = (unsigned const char *)src;
+	dest2 = (unsigned char *)dest;
+	if (dest2 <= src2)
+	{
+		i = -1;
+		while (++i < n)
+			dest2[i] = src2[i];
+	}
+	else
+		while (n--)
+			dest2[n] = src2[n];
+	return (dest);
 }

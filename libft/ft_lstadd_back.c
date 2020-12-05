@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 12:31:50 by zminhas           #+#    #+#             */
-/*   Updated: 2020/11/29 14:30:11 by zminhas          ###   ########.fr       */
+/*   Created: 2020/11/24 16:06:39 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/05 14:11:54 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
-		return (1);
-	return (0);
+	if (!alst)
+		return ;
+	if (!*alst)
+		*alst = new;
+	else
+		ft_lstlast(*alst)->next = new;
 }

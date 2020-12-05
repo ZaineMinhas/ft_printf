@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 12:54:37 by zminhas           #+#    #+#             */
-/*   Updated: 2020/11/26 13:31:13 by zminhas          ###   ########.fr       */
+/*   Created: 2020/11/18 11:51:45 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/03 14:07:31 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+size_t	ft_strlen(const char *s)
 {
-	t_list *lst_tamp;
+	size_t i;
 
-	if (!*lst)
-		return ;
-	while (*lst)
-	{
-		lst_tamp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = lst_tamp;
-	}
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
