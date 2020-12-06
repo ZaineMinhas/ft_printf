@@ -6,16 +6,17 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:32:59 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/02 18:07:39 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/06 17:50:49 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-int		main(void)
+int	main(void)
 {
-	printf("%x\n", 27);
-	ft_convert_x(27);
+	printf("%d\n", printf("%x\n", -10));
+	printf("%d\n", ft_hexlen(-10));
+	ft_printf("mon chiffre prefere est le : %x et le : %X\n", 10, -10);
 	return (0);
 }

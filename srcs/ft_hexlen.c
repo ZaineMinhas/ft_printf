@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_percent_xcap.c                                  :+:      :+:    :+:   */
+/*   ft_hexlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 15:34:00 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/06 17:46:10 by zminhas          ###   ########.fr       */
+/*   Created: 2020/12/06 17:20:07 by zminhas           #+#    #+#             */
+/*   Updated: 2020/12/06 17:42:28 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_percent_xcap(unsigned int n)
+int	ft_hexlen(int n)
 {
-	char	*base;
-	char	*res;
-	int		power;
-	int		i;
+	unsigned long int len;
 
-	base = "0123456789ABCDEFf";
-	power = ft_hexlen(n);
-	if (!(res = ft_calloc(sizeof(char), (power + 1))))
-		return (0);
-	i = ft_hexlen(n);
-	while (power--)
-	{
-		res[power] = base[n % 16];
-		n /= 16;
-	}
-	ft_putstr_fd(res, 1);
-	return (i);
+	len = (n < 0) ? 1 : 0;
+	while (n /= 16)
+		len++;
+	return (++len);
 }
