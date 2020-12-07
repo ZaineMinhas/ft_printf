@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 15:10:22 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/06 17:45:58 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/07 13:26:03 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int		ft_percent_x(unsigned int n)
 		res[power] = base[n % 16];
 		n /= 16;
 	}
-	if (n < 0)
-		write(1, "-", 1);
 	ft_putstr_fd(res, 1);
 	return (i);
 }

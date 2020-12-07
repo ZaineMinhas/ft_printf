@@ -6,17 +6,17 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 17:20:07 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/06 17:42:28 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/07 13:25:09 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_hexlen(int n)
+int	ft_hexlen(unsigned int n)
 {
-	unsigned long int len;
+	int len;
 
-	len = (n < 0) ? 1 : 0;
+	len = 0;
 	while (n /= 16)
 		len++;
 	return (++len);
