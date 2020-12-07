@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:20:37 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/05 15:15:52 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/07 14:22:25 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static	void	ft_putnbr_remix(unsigned int n)
 	ft_putchar_fd(48 + nb % 10, 1);
 }
 
-int		ft_percent_u(int n)
+int				ft_percent_u(int n)
 {
 	if (n > 0)
 	{

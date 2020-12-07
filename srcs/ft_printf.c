@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/06 16:38:31 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/07 14:25:27 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	int	ft_percent_all(const char *format, va_list args)
 	return (0);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	int		i;
 	va_list args;
@@ -56,7 +56,7 @@ int		ft_printf(const char *format, ...)
 			write(1, format, 1);
 			i++;
 		}
-	format++;
+		format++;
 	}
 	va_end(args);
 	return (i);
