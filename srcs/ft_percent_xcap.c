@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 15:34:00 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/06 17:46:10 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/11 13:23:16 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_percent_xcap(unsigned int n)
 	power = ft_hexlen(n);
 	if (!(res = ft_calloc(sizeof(char), (power + 1))))
 		return (0);
-	i = ft_hexlen(n);
+	i = power;
 	while (power--)
 	{
 		res[power] = base[n % 16];
