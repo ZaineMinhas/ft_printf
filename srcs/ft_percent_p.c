@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:13:09 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/07 15:25:56 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/14 14:45:32 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,8 @@ static	int		ft_percent_x_remix(unsigned long n)
 int		ft_percent_p(void *ptr)
 {
 	unsigned long	adrs;
-	int 			i;
 
-	i = 2;
 	adrs = (unsigned long)ptr;
 	ft_putstr_fd("0x", 1);
-	i += ft_percent_x_remix(adrs);
-	return (i);
+	return (ft_percent_x_remix(adrs) + 2);
 }
