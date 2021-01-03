@@ -6,13 +6,13 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/11 13:51:39 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/03 18:22:20 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	int	ft_percent_all(const char *format, va_list args)
+int		ft_percent_all(const char *format, va_list args)
 {
 	if (*format == 'd' || *format == 'i')
 		return (ft_percent_d_and_i(va_arg(args, int)));
@@ -36,50 +36,48 @@ static	int	ft_percent_all(const char *format, va_list args)
 	return (0);
 }
 
-// static	int	ft_flagchecker(const char *format, va_list args)
-// {
-// 	int nb;
+void	ft_reset(void)
+{
+	list.the_flag[0] = 0;
+	list.the_flag[1] = 0;
+	list.prec[0] = 0;
+	list.prec[1] = 0;
+}
 
-// 	if (*format == 'c' || *format == 'd' || *format == 'i' || *format == 'p' ||\
-// 	 *format == 's' || *format == 'u' ||	*format == 'x' || *format == 'X')
-// 		return (ft_percent_all(format, args));
-// 	nb = 0;
-// 	if (ft_isdigit(*format))
-// 	{
-// 		while (ft_isdigit(*format))
-// 		{
-// 			nb++;
-// 			format++;
-// 		}
-// 		nb = ft_atoi(ft_substr((format - nb), 0, nb));
-// 	}
-// 	else if (*format == '*')
-// 	{
-// 		nb = va_arg(args, int);
-// 		format++;
-// 	}
-// 	if (*format == '-')
-// 		return (ft_flag_minus(format, va_arg(args, int)));
-// 	if (*format == '0' || *format == '.')
-// 		return (ft_flag_zero_and_point(format, va_arg(args, int)));
-// 	if (*format == '*')
-// 		return (ft_flag_star(format, va_arg(args, int)));
-// 	return (ft_percent_all(format, args));
-// }
+int		ft_flag_checker(const char *format, va_list args)
+{
+	if (*format == '-')
+		list.the_flag[0] = 1;
+	else if (*format == '0')
+		list.the_flag[0] = 2;
+	else if (*format == '*')
+		list.the_flag[0] = 3;
+	else if (*format == '.')
+		list.the_flag[0] = 4;
+	else if (ft_isdigit((int)*format))
+		list.the_flag[0] = 5;
+	if (list.the_flag[0])
+		format++;
+	if (*format == '.' && list.the_flag[0] != 3)
+		list.the_flag[1] = 1;
+}
 
-int			ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	int		i;
 	va_list args;
 
+	if (!format)
+		return (0);
 	i = 0;
+	ft_reset();
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			i += ft_percent_all(format, args);
+			i += ft_flag_checker(format, args);
 			format++;
 		}
 		else
