@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/03 18:22:20 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/04 14:23:03 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_percent_all(const char *format, va_list args)
 
 void	ft_reset(void)
 {
+	list.total = 0;
 	list.the_flag[0] = 0;
 	list.the_flag[1] = 0;
 	list.prec[0] = 0;
@@ -64,12 +65,10 @@ int		ft_flag_checker(const char *format, va_list args)
 
 int		ft_printf(const char *format, ...)
 {
-	int		i;
 	va_list args;
 
 	if (!format)
 		return (0);
-	i = 0;
 	ft_reset();
 	va_start(args, format);
 	while (*format)
@@ -77,16 +76,16 @@ int		ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			i += ft_flag_checker(format, args);
+			list.total += ft_flag_checker(format, args);
 			format++;
 		}
 		else
 		{
 			write(1, format, 1);
-			i++;
+			list.total++;
 		}
 		format++;
 	}
 	va_end(args);
-	return (i);
+	return (list.total);
 }

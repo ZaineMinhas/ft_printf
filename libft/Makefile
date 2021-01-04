@@ -6,7 +6,7 @@
 #    By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 18:35:49 by zminhas           #+#    #+#              #
-#    Updated: 2020/12/06 16:10:30 by zminhas          ###   ########.fr        #
+#    Updated: 2020/12/28 18:12:53 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,6 @@ NAME	=	libft.a
 $(NAME):	${OBJS}
 			@ar -rcs ${NAME} ${OBJS}
 			@ranlib ${NAME}
-			@clear
 			@echo "${GREEN}Library created !${RESET}"
 
 all:		${NAME}
@@ -86,24 +85,22 @@ all:		${NAME}
 clean:
 			@rm -f ${OBJS}
 			@rm -f ${OBJS_BONUS}
-			@clear
 			@echo "${RED}Objects cleaned !${RESET}"
 
 fclean:
 			@rm -f ${OBJS}
 			@rm -f ${NAME}
 			@rm -f ${OBJS_BONUS}
-			@clear
 			@echo "${RED}fclean done !${RESET}"
 
 bonus:		${OBJS_BONUS}
 			@ar -rcs ${NAME} ${OBJS_BONUS}
 			@ranlib ${NAME}
-			@clear
 			@echo "${PURPLE}Bonus !${RESET}"
 
-full:		all bonus
-			@clear
+full:		${OBJS} ${OBJS_BONUS}
+			@ar -rcs ${NAME} ${OBJS} ${OBJS_BONUS}
+			@ranlib ${NAME}
 			@echo "${PURPLE}JeeJ fuller !${RESET}"
 
 re:			fclean all

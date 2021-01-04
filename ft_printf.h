@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/03 18:21:56 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/04 14:20:20 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 typedef struct	s_list
 {
+	int	total;
 	int	the_flag[2];
 	int prec[2];
 }				t_list;

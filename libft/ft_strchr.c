@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 13:18:01 by zminhas           #+#    #+#             */
-/*   Updated: 2020/11/19 18:09:30 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/28 18:12:39 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	int i;
 
+	if (!s)
+		return (NULL);
 	i = -1;
 	while (s[++i])
 		if (s[i] == (char)c)

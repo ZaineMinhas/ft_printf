@@ -3,30 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:15:07 by zminhas           #+#    #+#             */
-/*   Updated: 2020/11/27 15:33:36 by zminhas          ###   ########.fr       */
+/*   Updated: 2020/12/28 18:12:25 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del)(void *))
+static void	ft_free(t_list **lst)
+{
+	t_list	*tmp;
+
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		free(tmp);
+	}
+}
+
+t_list		*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del)(void *))
 {
 	t_list	*dest;
 	t_list	*elemf;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
-	if (!f)
-		return (lst);
 	dest = NULL;
 	while (lst)
 	{
 		if (!(elemf = ft_lstnew(f(lst->content))))
 		{
-			ft_lstclear(&elemf, del);
+			if (del)
+				ft_lstclear(&elemf, del);
+			else
+				ft_free(&dest);
 			return (NULL);
 		}
 		ft_lstadd_back(&dest, elemf);
