@@ -6,13 +6,13 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:13:09 by zminhas           #+#    #+#             */
-/*   Updated: 2020/12/14 14:45:32 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/05 19:12:17 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	int	ft_hexlen_remix(unsigned long n)
+static	int		ft_hexlen_remix(unsigned long n)
 {
 	int len;
 
@@ -43,7 +43,7 @@ static	int		ft_percent_x_remix(unsigned long n)
 	return (i);
 }
 
-int		ft_percent_p(void *ptr)
+int				ft_percent_p(void *ptr)
 {
 	unsigned long	adrs;
 
