@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/05 19:09:41 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/06 14:57:24 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
-typedef struct	s_list
+typedef struct	r_list
 {
 	va_list 	args;
 	int			total;
 	int			the_flag[2];
 	int 		prec[2];
-}				t_list;
+}				p_list;
 
-t_list 			list;
+p_list 			list;
 
 /*
 ** Main fonctions
@@ -38,7 +38,8 @@ void			ft_reset(void);
 */
 
 int				ft_check_all(const char *format);
-void			ft_flag_checker(const char *format);
+int				ft_flag_checker(const char *format);
+int				ft_flag_value(const char *format);
 
 /*
 ** Percent fonctions

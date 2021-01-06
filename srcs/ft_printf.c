@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/05 19:12:58 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/06 14:35:09 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	ft_reset(void)
 
 int		ft_check_all(const char *format)
 {
-	ft_flag_checker(format);
+	if (ft_flag_checker(format))
+		ft_flag_value(format);
 }
 
 int		ft_printf(const char *format, ...)
