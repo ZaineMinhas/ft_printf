@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/06 14:35:09 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:31:52 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_percent_all(const char *format)
 void	ft_reset(void)
 {
 	list.total = 0;
+	list.error = 0;
 	list.the_flag[0] = 0;
 	list.the_flag[1] = 0;
 	list.prec[0] = 0;

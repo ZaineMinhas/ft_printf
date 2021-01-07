@@ -13,12 +13,18 @@ void	ft_reset(void)
 	prec[0] = 0;
 	prec[1] = 0;
 }
-
 int		ft_isdigit(int c)
 {
 	return (c >= 48 && c <= 57);
 }
-
+int	ft_ispercent(const char *format, int index)
+{
+	if (format[index] == 'c' || format[index] == 'd' ||\
+	format[index] == 'i' || format[index] == 'p' || format[index] == 's' ||\
+	format[index] == 'u' || format[index] == 'x' || format[index] == 'X')
+		return (1);
+	return (0);
+}
 int		ft_atoi(const char *str)
 {
 	unsigned long long		nb;
@@ -43,7 +49,6 @@ int		ft_atoi(const char *str)
 	}
 	return ((int)nb * pos_neg);
 }
-
 int	ft_pass(const char *format, int index)
 {
 	int i;
@@ -63,66 +68,74 @@ int	ft_pass(const char *format, int index)
 	
 }
 
+
+int	ft_get_flag_value(const char **format)
+{
+	int	res;
+
+	res = 0;
+	if (**format == '*')
+	{
+		(*format)++;
+		return (va_arg(args, int));
+	}
+	else if (ft_isdigit((int)**format))
+	{
+		res = ft_atoi(*format);
+		while (ft_isdigit((int)**format))
+			(*format)++;
+		return (res);
+	}
+	return (res);
+}
+
 int	ft_flag_checker(const char *format)
 {
 	int i;
-	int j;
 
-	i = 0;
-	j = -1;
-	while (++j < 2)
+	i = -1;
+	while (++i < 2)
 	{
-		if (format[i] == '0')
-			the_flag[j] = 1;
-		else if (format[i] == '-')
+		if (*format == '0')
+			the_flag[i] = 1;
+		else if (*format == '-')
+			the_flag[i] = 2;
+		else if (*format == '.')
+			the_flag[i] = 4;
+		else if (*format == '*' || ft_isdigit((int)*format))
+			the_flag[i] = 3;
+		if (the_flag[i])
 		{
-			the_flag[j] = 2;
-			while (format[i] == '-')
-				i++;
+			format++;
+			if (the_flag[i] == 1 || the_flag[i] == 2)
+			{
+				while (*format == *(format - 1))
+					format++;
+			}
+			// if (the_flag[i] == 4)
+			// 	format++;
+			prec[i] = ft_get_flag_value(&format);
 		}
-		else if (format[i] == '*' || ft_isdigit((int)format[i]))
-			the_flag[j] = 3;
-		else if (format[i] == '.')
-			the_flag[j] = 4;
-		if (the_flag[0])
-			i += ft_pass(format, i);
 	}
-	printf("%d\n", the_flag[0]);
-	printf("%d\n", the_flag[1]);
+	if (!the_flag[0])
+		return (0);
 	return (1);
 }
 
-int	ft_flag_value(const char *format)
-{
-	int i;
-
-	i = 0;
-	if (the_flag[i] && i < 2)
-	{
-		if (*format == '*')
-		{
-			prec[i] = va_arg(args, int);
-			format++;
-		}
-		else
-		{
-			format++;
-			prec[i] = ft_atoi(format);
-			while (ft_isdigit((int)*format))
-				format++;
-		}
-		i++;
-	}
-	printf("%d\n", prec[0]);
-	printf("%d\n", prec[1]);
-	return (0);
-}
 
 int		ft_test(char *format, ...)
 {
 	va_start(args, format);
 	if (ft_flag_checker(format))
-		ft_flag_value(format);
+	{
+		printf("VICTORY !!!\n");
+		printf("\n--- LES FLAGS ---\n");
+		printf("%d\n", the_flag[0]);
+		printf("%d\n", the_flag[1]);
+		printf("\n--- LES PRECISIONS ---\n");
+		printf("%d\n", prec[0]);
+		printf("%d\n", prec[1]);
+	}
 	else
 		printf("ERROR\n");
 	va_end(args);
@@ -130,7 +143,9 @@ int		ft_test(char *format, ...)
 }
 int	main(void)
 {
-	char format[100] = "----------22.45";
-	ft_test(format, 10);
+	char format[100] = "------------0000045";
+	ft_test(format, 45, 66);
 	return (0);
 }
+
+// la commande : c le_ziiz.c && clear && ./a.out 
