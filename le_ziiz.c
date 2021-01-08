@@ -50,7 +50,6 @@ int		ft_atoi_remix(const char *str)
 		return (-1);
 	return ((int)nb * pos_neg);
 }
-
 int	ft_get_flag_value(const char **format, int index)
 {
 	int	res;
@@ -72,7 +71,6 @@ int	ft_get_flag_value(const char **format, int index)
 	}
 	return (res);
 }
-
 int	ft_flag_checker(const char *format)
 {
 	int i;
@@ -123,6 +121,7 @@ int		ft_test(char *format, ...)
 	va_end(args);
 	return (0);
 }
+
 int	main(void)
 {
 	char format[100] = "-w.f";

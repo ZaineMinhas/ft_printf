@@ -6,18 +6,30 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/08 14:25:38 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:38:19 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_ispercent(const char *format, int index)
+int	ft_ispercent(int c)
 {
-	if (format[index] == 'c' || format[index] == 'd' ||\
-	format[index] == 'i' || format[index] == 'p' || format[index] == 's' ||\
-	format[index] == 'u' || format[index] == 'x' || format[index] == 'X')
+	if (c == 'c')
 		return (1);
+	if (c == 'd' || c == 'i')
+		return (2);
+	if (c == 'p')
+		return (3);
+	if (c == 's')
+		return (4);
+	if (c == 'u')
+		return (5);
+	if (c == 'x')
+		return (6);
+	if (c == 'X')
+		return (7);
+	if (c == '%')
+		return (8);
 	return (0);
 }
 
