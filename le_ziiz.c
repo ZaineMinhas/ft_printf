@@ -25,7 +25,7 @@ int	ft_ispercent(const char *format, int index)
 		return (1);
 	return (0);
 }
-int		ft_atoi(const char *str)
+int		ft_atoi_remix(const char *str)
 {
 	unsigned long long		nb;
 	unsigned long long		nb_tmp;
@@ -34,8 +34,6 @@ int		ft_atoi(const char *str)
 
 	i = 0;
 	pos_neg = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
 	if (str[i] == ' ' || str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
 			pos_neg = -1;
@@ -47,33 +45,19 @@ int		ft_atoi(const char *str)
 		if (nb < nb_tmp || nb > LLONG_MAX)
 			return ((pos_neg == 1) ? -1 : 0);
 	}
+	if ((str[0] == '0' && ((int)nb * pos_neg) > 0) ||\
+	(str[1] == '0' && ((int)nb * pos_neg) < 0))
+		return (-1);
 	return ((int)nb * pos_neg);
 }
-int	ft_pass(const char *format, int index)
-{
-	int i;
 
-	i = 0;
-	if (format[index] == '*')
-		return (1);
-	else
-	{
-		while (ft_isdigit((int)format[index]))
-		{
-			index++;
-			i++;
-		}
-		return (index - i);
-	}
-	
-}
-
-
-int	ft_get_flag_value(const char **format)
+int	ft_get_flag_value(const char **format, int index)
 {
 	int	res;
 
 	res = 0;
+	if (the_flag[index] == 4)
+		(*format)++;
 	if (**format == '*')
 	{
 		(*format)++;
@@ -81,7 +65,7 @@ int	ft_get_flag_value(const char **format)
 	}
 	else if (ft_isdigit((int)**format))
 	{
-		res = ft_atoi(*format);
+		res = ft_atoi_remix(*format);
 		while (ft_isdigit((int)**format))
 			(*format)++;
 		return (res);
@@ -106,20 +90,18 @@ int	ft_flag_checker(const char *format)
 			the_flag[i] = 3;
 		if (the_flag[i])
 		{
-			format++;
 			if (the_flag[i] == 1 || the_flag[i] == 2)
 			{
+				format++;
 				while (*format == *(format - 1))
 					format++;
 			}
-			// if (the_flag[i] == 4)
-			// 	format++;
-			prec[i] = ft_get_flag_value(&format);
+			prec[i] = ft_get_flag_value(&format, i);
 		}
 	}
-	if (!the_flag[0])
-		return (0);
-	return (1);
+	if (the_flag[0])
+		return (1);
+	return (0);
 }
 
 
@@ -143,8 +125,8 @@ int		ft_test(char *format, ...)
 }
 int	main(void)
 {
-	char format[100] = "------------0000045";
-	ft_test(format, 45, 66);
+	char format[100] = "-w.f";
+	ft_test(format, 32, 5);
 	return (0);
 }
 
