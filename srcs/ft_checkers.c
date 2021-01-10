@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 18:36:31 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/08 17:46:53 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/10 14:34:06 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_flag_checker(const char *format)
 	return (0);
 }
 
-int ft_flag_error(const char *format)
+int	ft_flag_error(const char *format)
 {
 	if (!(var.percent = ft_ispercent((int)*format)))
 		return (1);
