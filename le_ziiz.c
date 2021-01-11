@@ -6,10 +6,12 @@
 
 int the_flag[2];
 int prec[2];
+int new_format;
 va_list args;
 
 void	ft_reset(void)
 {
+	new_format = 0;
 	the_flag[0] = 0;
 	the_flag[1] = 1;
 	prec[0] = 0;
@@ -183,16 +185,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(dest + ft_strlen(s1), s2, ft_strlen(s2));
 	return (dest);
 }
-void	*ft_free_return(char *s1, char *s2, char *dest)
-{
-	if (s1)
-		free((void *)s1);
-	if (s2)
-		free((void *)s2);
-	if (dest)
-		free((void *)dest);
-	return (NULL);
-}
 char	*ft_char_trans(const char *format)
 {
 	char	*s1;
@@ -212,7 +204,7 @@ int		ft_atoi_remix(const char *str)
 	int						pos_neg;
 	int						i;
 
-	if (str[0] == '0' || str[0] == '-')
+	if (str[0] == '0' || str[0] == '-' || str[0] == '.')
 		return (-1);
 	i = 0;
 	pos_neg = 1;
@@ -236,11 +228,8 @@ int	ft_get_flag_value(const char **format, int index)
 	res = 0;
 	if (the_flag[index] == 4)
 		(*format)++;
-	if (**format == '*')
-	{
-		(*format)++;
-		return (va_arg(args, int));
-	}
+	if (**format == '-')
+		return (-1);
 	else if (ft_isdigit((int)**format))
 	{
 		res = ft_atoi_remix(*format);
@@ -257,6 +246,7 @@ int	ft_flag_checker(const char *format)
 	i = -1;
 	while (++i < 2)
 	{
+		//printf("cahr = %c\n", *format);
 		if (*format == '0')
 			the_flag[i] = 1;
 		else if (*format == '-')
@@ -285,12 +275,12 @@ int	ft_flag_checker(const char *format)
 int		ft_test(const char *format, ...)
 {
 	va_start(args, format);
-	if (ft_index(format, '*') >= 0)
+	while (ft_index(format, '*') >= 0)
 	{
+		new_format++;
 		format = ft_char_trans(format);
-		printf("%s\n", format);
-		//return (0);
 	}
+	//printf("%s\n", format);
 	if (ft_flag_checker(format))
 	{
 		printf("VICTORY !!!\n");
@@ -309,8 +299,9 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	char format[100] = "*.56d";
-	ft_test(format, 032);
+	printf("%*dLOL\n", 012, 345);
+	char format[100] = "*.*d";
+	ft_test(format, 012, 56);
 	return (0);
 }
 

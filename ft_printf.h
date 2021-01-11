@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/10 19:03:45 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:17:09 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct	s_listx
 	va_list		args;
 	int			total;
 	int			error;
+	int			new_format;
 	int			flag[2];
 	int			prec[2];
 	int			percent;

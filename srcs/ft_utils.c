@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/10 19:24:49 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:17:48 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*ft_char_trans(const char *format)
 		return (NULL);
 	if (!(s1 = ft_strjoin(s1, ft_strchr(format, '*') + 1)))
 		return (NULL);
+	if (var.new_format)
+		free((void *)format);
 	return (s1);
 }
 

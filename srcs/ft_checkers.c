@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 18:36:31 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/10 14:34:06 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:46:21 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ int	ft_get_flag_value(const char **format, int index)
 	int	res;
 
 	res = 0;
-	if (var.flag[index] != 3)
+	if (var.flag[index] == 4)
 		(*format)++;
-	if (**format == '*')
-	{
-		(*format)++;
-		return (va_arg(var.args, int));
-	}
+	if (**format == '-')
+		return (-1);
 	else if (ft_isdigit((int)**format))
 	{
 		res = ft_atoi_remix(*format);
