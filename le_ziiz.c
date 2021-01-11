@@ -228,8 +228,12 @@ int	ft_get_flag_value(const char **format, int index)
 	res = 0;
 	if (the_flag[index] == 4)
 		(*format)++;
-	if (**format == '-')
-		return (-1);
+	if (**format == '*')
+	{
+		(*format)++;
+		return (va_arg(args, int));
+
+	}
 	else if (ft_isdigit((int)**format))
 	{
 		res = ft_atoi_remix(*format);
@@ -275,12 +279,12 @@ int	ft_flag_checker(const char *format)
 int		ft_test(const char *format, ...)
 {
 	va_start(args, format);
-	while (ft_index(format, '*') >= 0)
+	if (*format == '*')
 	{
 		new_format++;
 		format = ft_char_trans(format);
 	}
-	//printf("%s\n", format);
+	printf("%s\n", format);
 	if (ft_flag_checker(format))
 	{
 		printf("VICTORY !!!\n");
@@ -299,9 +303,9 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	printf("%*dLOL\n", 012, 345);
-	char format[100] = "*.*d";
-	ft_test(format, 012, 56);
+	//printf("%*.*dLOL\n", -12, -345, 123456);
+	char format[100] = "*.d";
+	ft_test(format, -12, -56);
 	return (0);
 }
 
