@@ -197,78 +197,58 @@ char	*ft_char_trans(const char *format)
 		return (NULL);
 	return (s1);
 }
-int		ft_atoi_remix(const char *str)
+int		ft_atoi_remix(const char *str, int *i)
 {
 	unsigned long long		nb;
 	unsigned long long		nb_tmp;
 	int						pos_neg;
-	int						i;
 
-	if (str[0] == '0' || str[0] == '-' || str[0] == '.')
-		return (-1);
-	i = 0;
+	if (str[*i] == '*')
+	{
+		(*i)++;
+		return (va_arg(args, int));
+	}
 	pos_neg = 1;
-	if (str[i] == ' ' || str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			pos_neg = -1;
+	while (str[*i] == '-')
+	{
+		pos_neg = -1;
+		(*i)++;
+	}
 	nb = 0;
-	while (str[i] >= '0' && str[i] <= '9' && str[i])
+	while (str[*i] >= '0' && str[*i] <= '9' && str[*i])
 	{
 		nb_tmp = nb;
-		nb = nb * 10 + (str[i++] - 48);
+		nb = nb * 10 + (str[(*i)++] - 48);
 		if (nb < nb_tmp || nb > LLONG_MAX)
 			return ((pos_neg == 1) ? -1 : 0);
 	}
 	return ((int)nb * pos_neg);
 }
-int	ft_get_flag_value(const char **format, int index)
+int	ft_get_flag_value(const char *format, int *i, int j)
 {
-	int	res;
-
-	res = 0;
-	if (the_flag[index] == 4)
-		(*format)++;
-	if (**format == '*')
-	{
-		(*format)++;
-		return (va_arg(args, int));
-
-	}
-	else if (ft_isdigit((int)**format))
-	{
-		res = ft_atoi_remix(*format);
-		while (ft_isdigit((int)**format))
-			(*format)++;
-		return (res);
-	}
-	return (res);
+	if (the_flag[j] != 3)
+		(*i)++;
+	return (ft_atoi_remix(format, i));
 }
 int	ft_flag_checker(const char *format)
 {
 	int i;
+	int j;
 
-	i = -1;
-	while (++i < 2)
+	i = 0;
+	j = -1;
+	while (++j < 2)
 	{
-		//printf("cahr = %c\n", *format);
-		if (*format == '0')
-			the_flag[i] = 1;
-		else if (*format == '-')
-			the_flag[i] = 2;
-		else if (*format == '.')
-			the_flag[i] = 4;
-		else if (*format == '*' || ft_isdigit((int)*format))
-			the_flag[i] = 3;
-		if (the_flag[i])
-		{
-			if (the_flag[i] == 1 || the_flag[i] == 2)
-			{
-				format++;
-				while (*format == *(format - 1))
-					format++;
-			}
-			prec[i] = ft_get_flag_value(&format, i);
-		}
+		if (format[i] == '0')
+			the_flag[j] = 1;
+		else if (format[i] == '-')
+			the_flag[j] = 2;
+		else if (format[i] == '.')
+			the_flag[j] = 4;
+		else if (format[i] == '*' || ft_isdigit((int)format[i]))
+			the_flag[j] = 3;
+		if (the_flag[j])
+			prec[j] = ft_get_flag_value(format, &i, j);
 	}
 	if (the_flag[0])
 		return (1);
@@ -303,7 +283,6 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	//printf("%*.*dLOL\n", -12, -345, 123456);
 	char format[100] = "*.d";
 	ft_test(format, -12, -56);
 	return (0);

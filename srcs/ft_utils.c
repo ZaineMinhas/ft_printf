@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/11 15:17:48 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:30:11 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ int		ft_ispercent(int c)
 	return (0);
 }
 
-int        ft_index(char *s, char c)
+int		ft_index(char *s, char c)
 {
-    int i;
+	int i;
 
-    if (!s)
-        return (-1);
-    i = -1;
-    while (s[++i] && !ft_ispercent((int)s[i]))
-        if (s[i] == c)
-            return (i);
-    return ((s[i] == c) ? i : -1);
+	if (!s)
+		return (-1);
+	i = -1;
+	while (s[++i] && !ft_ispercent((int)s[i]))
+		if (s[i] == c)
+			return (i);
+	return ((s[i] == c) ? i : -1);
 }
 
 char	*ft_char_trans(const char *format)
@@ -52,7 +52,7 @@ char	*ft_char_trans(const char *format)
 
 	if (!(s1 = ft_substr(format, 0, ft_index(format, '*'))))
 		return (NULL);
-	if (!(s1 = ft_strjoin(s1, ft_itoa(va_arg(var.args, int)))))	
+	if (!(s1 = ft_strjoin(s1, ft_itoa(va_arg(var.args, int)))))
 		return (NULL);
 	if (!(s1 = ft_strjoin(s1, ft_strchr(format, '*') + 1)))
 		return (NULL);
@@ -61,25 +61,28 @@ char	*ft_char_trans(const char *format)
 	return (s1);
 }
 
-int		ft_atoi_remix(const char *str)
+int		ft_atoi_remix(const char *str, int *i)
 {
 	unsigned long long		nb;
 	unsigned long long		nb_tmp;
 	int						pos_neg;
-	int						i;
 
-	if (str[0] == '0' || str[0] == '-')
-		return (-1);
-	i = 0;
+	if (str[*i] == '*')
+	{
+		(*i)++;
+		return (va_arg(var.args, int));
+	}
 	pos_neg = 1;
-	if (str[i] == ' ' || str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			pos_neg = -1;
+	while (str[*i] == '-')
+	{
+		pos_neg = -1;
+		(*i)++;
+	}
 	nb = 0;
-	while (str[i] >= '0' && str[i] <= '9' && str[i])
+	while (str[*i] >= '0' && str[*i] <= '9' && str[*i])
 	{
 		nb_tmp = nb;
-		nb = nb * 10 + (str[i++] - 48);
+		nb = nb * 10 + (str[(*i)++] - 48);
 		if (nb < nb_tmp || nb > LLONG_MAX)
 			return ((pos_neg == 1) ? -1 : 0);
 	}
