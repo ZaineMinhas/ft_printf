@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/12 18:30:11 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/13 14:29:21 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,25 @@ int		ft_index(char *s, char c)
 		if (s[i] == c)
 			return (i);
 	return ((s[i] == c) ? i : -1);
+}
+
+void	ft_ajust_var(void)
+{
+	if (var.flag[0])
+	{
+		if (var.flag[0] == 1 && var.prec[0] < 0)
+		{
+			var.flag[0] = 2;
+			var.prec[0] *= -1;
+		}
+		if (var.flag[0] == 2 && var.prec[0] < 0)
+		{
+			var.flag[0] = 2;
+			var.prec[0] *= -1;
+		}
+	}
+	if (var.flag[1] == 4 && var.prec[1] < 0)
+		var.prec[1] = -1;
 }
 
 char	*ft_char_trans(const char *format)

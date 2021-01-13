@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/12 18:03:34 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/13 14:28:26 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				ft_hexlen(unsigned int n);
 int				ft_ispercent(int c);
 int       		ft_index(char *s, char c);
 int				ft_atoi_remix(const char *str, int *i);
-void			*ft_free_return(char **s1, char **s2, char **dest);
+void			ft_ajust_var(void);
 char			*ft_char_trans(const char *format);
 
 #endif

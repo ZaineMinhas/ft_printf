@@ -17,6 +17,24 @@ void	ft_reset(void)
 	prec[0] = 0;
 	prec[1] = 0;
 }
+void	ft_ajust_var(void)
+{
+	if (the_flag[0])
+	{
+		if (the_flag[0] == 1 && prec[0] < 0)
+		{
+			the_flag[0] = 2;
+			prec[0] *= -1;
+		}
+		if (the_flag[0] == 2 && prec[0] < 0)
+		{
+			the_flag[0] = 2;
+			prec[0] *= -1;
+		}
+	}
+	if (the_flag[1] == 4 && prec[1] < 0)
+		prec[1] = -1;
+}
 size_t	ft_strlen(const char *s)
 {
 	size_t i;
@@ -259,14 +277,15 @@ int	ft_flag_checker(const char *format)
 int		ft_test(const char *format, ...)
 {
 	va_start(args, format);
-	if (*format == '*')
-	{
-		new_format++;
-		format = ft_char_trans(format);
-	}
+	// if (*format == '*')
+	// {
+	// 	new_format++;
+	// 	format = ft_char_trans(format);
+	// }
 	printf("%s\n", format);
 	if (ft_flag_checker(format))
 	{
+		ft_ajust_var();
 		printf("VICTORY !!!\n");
 		printf("\n--- LES FLAGS ---\n");
 		printf("%d\n", the_flag[0]);
@@ -283,7 +302,7 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	char format[100] = "*.d";
+	char format[100] = "-*0-78954d";
 	ft_test(format, -12, -56);
 	return (0);
 }
