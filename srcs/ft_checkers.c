@@ -6,38 +6,36 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 18:36:31 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/12 18:30:10 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/14 17:19:39 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_get_flag_value(const char *format, int *i, int j)
+int	ft_get_flag_value(const char **format, int i)
 {
-	if (var.flag[j] != 3)
-		(*i)++;
-	return (ft_atoi_remix(*format, i));
+	if (var.flag[i] != 3)
+		(*format)++;
+	return (ft_atoi_remix(*format));
 }
 
 int	ft_flag_checker(const char *format)
 {
 	int i;
-	int j;
 
-	i = 0;
-	j = -1;
-	while (++j < 2)
+	i = -1;
+	while (++i < 2)
 	{
-		if (format[i] == '0')
-			var.flag[j] = 1;
-		else if (format[i] == '-')
-			var.flag[j] = 2;
-		else if (format[i] == '.')
-			var.flag[j] = 4;
-		else if (format[i] == '*' || ft_isdigit((int)format[i]))
-			var.flag[j] = 3;
-		if (var.flag[j])
-			var.prec[j] = ft_get_flag_value(format, &i, j);
+		if (*format == '0')
+			var.flag[i] = 1;
+		else if (*format == '-')
+			var.flag[i] = 2;
+		else if (*format == '.')
+			var.flag[i] = 4;
+		else if (*format == '*' || ft_isdigit((int)*format))
+			var.flag[i] = 3;
+		if (var.flag[i])
+			var.prec[i] = ft_get_flag_value(&format, i);
 	}
 	if (var.flag[0])
 		return (1);

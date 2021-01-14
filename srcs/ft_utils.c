@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/14 17:12:55 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/14 17:27:59 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,28 +65,28 @@ void	ft_ajust_var(void)
 		var.prec[1] = -1;
 }
 
-int		ft_atoi_remix(const char *str, int *i)
+int		ft_atoi_remix(const char **str)
 {
 	unsigned long long		nb;
 	unsigned long long		nb_tmp;
 	int						pos_neg;
 
-	while (str[*i] == '-' || str[*i] == '0')
+	while (*(*str) == '-' || *(*str) == '0')
 	{
 		pos_neg = -1;
-		(*i)++;
+		(*str)++;
 	}
-	if (str[*i] == '*')
+	if (*(*str) == '*')
 	{
-		(*i)++;
+		(*str)++;
 		return (va_arg(var.args, int));
 	}
 	pos_neg = 1;
 	nb = 0;
-	while (str[*i] >= '0' && str[*i] <= '9' && str[*i])
+	while (*(*str) >= '0' && *(*str) <= '9' && *(*str))
 	{
 		nb_tmp = nb;
-		nb = nb * 10 + (str[(*i)++] - 48);
+		nb = nb * 10 + (*(*str)++ - 48);
 		if (nb < nb_tmp || nb > LLONG_MAX)
 			return ((pos_neg == 1) ? -1 : 0);
 	}

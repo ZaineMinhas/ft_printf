@@ -215,58 +215,56 @@ char	*ft_char_trans(const char *format)
 		return (NULL);
 	return (s1);
 }
-int		ft_atoi_remix(const char *str, int *i)
+int		ft_atoi_remix(const char **str)
 {
 	unsigned long long		nb;
 	unsigned long long		nb_tmp;
 	int						pos_neg;
 
-	while (str[*i] == '-' || str[*i] == '0')
+	while (*(*str) == '-' || *(*str) == '0')
 	{
 		pos_neg = -1;
-		(*i)++;
+		(*str)++;
 	}
-	if (str[*i] == '*')
+	if (*(*str) == '*')
 	{
-		(*i)++;
+		(*str)++;
 		return (va_arg(args, int));
 	}
 	pos_neg = 1;
 	nb = 0;
-	while (str[*i] >= '0' && str[*i] <= '9' && str[*i])
+	while (*(*str) >= '0' && *(*str) <= '9' && *(*str))
 	{
 		nb_tmp = nb;
-		nb = nb * 10 + (str[(*i)++] - 48);
+		nb = nb * 10 + (*(*str)++ - 48);
 		if (nb < nb_tmp || nb > LLONG_MAX)
 			return ((pos_neg == 1) ? -1 : 0);
 	}
 	return ((int)nb * pos_neg);
 }
-int	ft_get_flag_value(const char *format, int *i, int j)
+int	ft_get_flag_value(const char **format, int i)
 {
-	if (the_flag[j] != 3)
-		(*i)++;
-	return (ft_atoi_remix(format, i));
+	if (the_flag[i] != 3)
+		(*format)++;
+	return (ft_atoi_remix(format));
 }
 int	ft_flag_checker(const char *format)
 {
 	int i;
-	int j;
 
-	i = 0;
-	j = -1;
-	while (++j < 2)
+	i = -1;
+	while (++i < 2)
 	{
-		if (format[i] == '0')
-			the_flag[j] = 1;
-		else if (format[i] == '-')
-			the_flag[j] = 2;
-		else if (format[i] == '.')
-			the_flag[j] = 4;
-		else if (format[i] == '*' || ft_isdigit((int)format[i]))
-			the_flag[j] = 3;
-		if (the_flag[j])
-			prec[j] = ft_get_flag_value(format, &i, j);
+		if (*format == '0')
+			the_flag[i] = 1;
+		else if (*format == '-')
+			the_flag[i] = 2;
+		else if (*format == '.')
+			the_flag[i] = 4;
+		else if (*format == '*' || ft_isdigit((int)*format))
+			the_flag[i] = 3;
+		if (the_flag[i])
+			prec[i] = ft_get_flag_value(&format, i);
 	}
 	if (the_flag[0])
 		return (1);
@@ -301,11 +299,11 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	char format[100] = "--------*.32d";
-	ft_test(format, 12, 56);
+	// char format[100] = "-0-0--0*.32d";
+	// ft_test(format, 12, 56);
+	printf("%-0-0-0-0-42d", 45);
 	return (0);
 }
 
-	//printf("%-----------*s\n", -12, "salut");
 // la commande : c le_ziiz.c && clear && ./a.out
-// la commande : c le_ziiz.c && clear && ./a.out | cat -e
+// la  deuxieme commande : gcc le_ziiz.c && clear && ./a.out | cat -e
