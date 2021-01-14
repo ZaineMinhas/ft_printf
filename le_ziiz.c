@@ -17,6 +17,15 @@ void	ft_reset(void)
 	prec[0] = 0;
 	prec[1] = 0;
 }
+int		ft_isdigit(int c)
+{
+	return (c >= 48 && c <= 57);
+}
+void	ft_pass(const char **str)
+{
+	while (ft_isdigit((int)*(*str)) || *(*str) == '-' || *(*str) == '*' || *(*str) == '.')
+		(*str)++;
+}
 void	ft_ajust_var(void)
 {
 	if (the_flag[0])
@@ -103,10 +112,6 @@ char	*ft_strdup(const char *s1)
 	while (s1[++i])
 		dest[i] = s1[i];
 	return (dest);
-}
-int		ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
 }
 int		ft_ispercent(int c)
 {
@@ -283,6 +288,13 @@ int		ft_test(const char *format, ...)
 	//printf("%s\n", format);
 	if (ft_flag_checker(format))
 	{
+		ft_pass(&format);
+		if (!ft_ispercent((int)*format))
+		{
+			printf("ERROR\n");
+			va_end(args);
+			return (0);
+		}
 		ft_ajust_var();
 		printf("--- LES FLAGS ---\n");
 		printf("%d\n", the_flag[0]);
@@ -299,9 +311,8 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	// char format[100] = "-0-0--0*.32d";
-	// ft_test(format, 12, 56);
-	printf("%-0-0-0-0-42d", 45);
+	char format[100] = "045.2d";
+	ft_test(format, 12, 56);
 	return (0);
 }
 
