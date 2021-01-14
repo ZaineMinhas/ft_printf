@@ -311,8 +311,9 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	char format[100] = "045.2d";
-	ft_test(format, 12, 56);
+	// char format[100] = "045.2d";
+	// ft_test(format, 12, 56);
+	printf("%0c", 'a');
 	return (0);
 }
 

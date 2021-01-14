@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 18:36:31 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/14 17:19:39 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/14 18:08:27 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_flag_error(const char *format)
 		return (1);
 	if (var.flag[0] && (var.flag[0] == var.flag[1]))
 		return (1);
-	if (var.prec[0] < 0 || var.prec[1] < 0)
+	if (/* quel flag va avec quel type */1)
 		return (1);
 	// a suivre. . .
 	return (0);
