@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/13 17:24:17 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/14 15:15:36 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 typedef struct	s_listx
 {
 	va_list		args;
+	char		add_char;
 	int			total;
-	int			error;
-	int			new_format;
 	int			flag[2];
 	int			prec[2];
 	int			percent;
@@ -68,6 +67,5 @@ int				ft_ispercent(int c);
 int       		ft_index(char *s, char c);
 int				ft_atoi_remix(const char *str, int *i);
 void			ft_ajust_var(void);
-char			*ft_char_trans(const char *format);
 
 #endif

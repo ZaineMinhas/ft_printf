@@ -21,7 +21,7 @@ void	ft_ajust_var(void)
 {
 	if (the_flag[0])
 	{
-		if (the_flag[0] == 1 && prec[0] < 0)
+		if ((the_flag[0] == 1 || the_flag[0] == 3) && prec[0] < 0)
 		{
 			the_flag[0] = 2;
 			prec[0] *= -1;
@@ -221,17 +221,17 @@ int		ft_atoi_remix(const char *str, int *i)
 	unsigned long long		nb_tmp;
 	int						pos_neg;
 
+	while (str[*i] == '-' || str[*i] == '0')
+	{
+		pos_neg = -1;
+		(*i)++;
+	}
 	if (str[*i] == '*')
 	{
 		(*i)++;
 		return (va_arg(args, int));
 	}
 	pos_neg = 1;
-	while (str[*i] == '-')
-	{
-		pos_neg = -1;
-		(*i)++;
-	}
 	nb = 0;
 	while (str[*i] >= '0' && str[*i] <= '9' && str[*i])
 	{
@@ -277,17 +277,16 @@ int	ft_flag_checker(const char *format)
 int		ft_test(const char *format, ...)
 {
 	va_start(args, format);
-	// if (*format == '*')
+	// while (ft_index(format, '*'))
 	// {
 	// 	new_format++;
-	// 	format = ft_char_trans(format);
+	//  	format = ft_char_trans(format);
 	// }
-	printf("%s\n", format);
+	//printf("%s\n", format);
 	if (ft_flag_checker(format))
 	{
 		ft_ajust_var();
-		printf("VICTORY !!!\n");
-		printf("\n--- LES FLAGS ---\n");
+		printf("--- LES FLAGS ---\n");
 		printf("%d\n", the_flag[0]);
 		printf("%d\n", the_flag[1]);
 		printf("\n--- LES PRECISIONS ---\n");
@@ -302,9 +301,11 @@ int		ft_test(const char *format, ...)
 
 int	main(void)
 {
-	char format[100] = "-*0-78954d";
-	ft_test(format, -12, -56);
+	char format[100] = "--------*.32d";
+	ft_test(format, 12, 56);
 	return (0);
 }
 
+	//printf("%-----------*s\n", -12, "salut");
 // la commande : c le_ziiz.c && clear && ./a.out
+// la commande : c le_ziiz.c && clear && ./a.out | cat -e

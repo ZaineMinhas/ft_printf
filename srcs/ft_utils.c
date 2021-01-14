@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/13 14:29:21 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/14 17:12:55 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_ajust_var(void)
 {
 	if (var.flag[0])
 	{
-		if (var.flag[0] == 1 && var.prec[0] < 0)
+		if ((var.flag[0] == 1 || var.flag[0] == 3) && var.prec[0] < 0)
 		{
 			var.flag[0] = 2;
 			var.prec[0] *= -1;
@@ -65,38 +65,23 @@ void	ft_ajust_var(void)
 		var.prec[1] = -1;
 }
 
-char	*ft_char_trans(const char *format)
-{
-	char	*s1;
-
-	if (!(s1 = ft_substr(format, 0, ft_index(format, '*'))))
-		return (NULL);
-	if (!(s1 = ft_strjoin(s1, ft_itoa(va_arg(var.args, int)))))
-		return (NULL);
-	if (!(s1 = ft_strjoin(s1, ft_strchr(format, '*') + 1)))
-		return (NULL);
-	if (var.new_format)
-		free((void *)format);
-	return (s1);
-}
-
 int		ft_atoi_remix(const char *str, int *i)
 {
 	unsigned long long		nb;
 	unsigned long long		nb_tmp;
 	int						pos_neg;
 
+	while (str[*i] == '-' || str[*i] == '0')
+	{
+		pos_neg = -1;
+		(*i)++;
+	}
 	if (str[*i] == '*')
 	{
 		(*i)++;
 		return (va_arg(var.args, int));
 	}
 	pos_neg = 1;
-	while (str[*i] == '-')
-	{
-		pos_neg = -1;
-		(*i)++;
-	}
 	nb = 0;
 	while (str[*i] >= '0' && str[*i] <= '9' && str[*i])
 	{
