@@ -313,7 +313,7 @@ int	main(void)
 {
 	// char format[100] = "045.2d";
 	// ft_test(format, 12, 56);
-	printf("%0c", 'a');
+	printf("%5d", 19123456789);
 	return (0);
 }
 

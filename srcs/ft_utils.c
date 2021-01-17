@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/14 17:27:59 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/17 20:25:05 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		ft_atoi_remix(const char **str)
 	unsigned long long		nb_tmp;
 	int						pos_neg;
 
+	pos_neg = 1;
 	while (*(*str) == '-' || *(*str) == '0')
 	{
 		pos_neg = -1;
@@ -81,7 +82,6 @@ int		ft_atoi_remix(const char **str)
 		(*str)++;
 		return (va_arg(var.args, int));
 	}
-	pos_neg = 1;
 	nb = 0;
 	while (*(*str) >= '0' && *(*str) <= '9' && *(*str))
 	{
