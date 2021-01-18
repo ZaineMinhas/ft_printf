@@ -21,6 +21,11 @@ int		ft_isdigit(int c)
 {
 	return (c >= 48 && c <= 57);
 }
+int		ft_percent_c(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 void	ft_pass(const char **str)
 {
 	while (ft_isdigit((int)*(*str)) || *(*str) == '-' || *(*str) == '*' || *(*str) == '.')
@@ -313,7 +318,7 @@ int	main(void)
 {
 	// char format[100] = "045.2d";
 	// ft_test(format, 12, 56);
-	printf("%5d", 19123456789);
+	printf("%033s", "salut");
 	return (0);
 }
 
