@@ -85,13 +85,11 @@ all:		${NAME}
 clean:
 			@rm -f ${OBJS}
 			@rm -f ${OBJS_BONUS}
-			@echo "${RED}Objects cleaned !${RESET}"
 
 fclean:
 			@rm -f ${OBJS}
 			@rm -f ${NAME}
 			@rm -f ${OBJS_BONUS}
-			@echo "${RED}fclean done !${RESET}"
 
 bonus:		${OBJS_BONUS}
 			@ar -rcs ${NAME} ${OBJS_BONUS}
@@ -101,7 +99,7 @@ bonus:		${OBJS_BONUS}
 full:		${OBJS} ${OBJS_BONUS}
 			@ar -rcs ${NAME} ${OBJS} ${OBJS_BONUS}
 			@ranlib ${NAME}
-			@echo "${PURPLE}JeeJ fuller !${RESET}"
+			@echo "${YELLOW}Libft.a created !${RESET}"
 
 re:			fclean all
 
