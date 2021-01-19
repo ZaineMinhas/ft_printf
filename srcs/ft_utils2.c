@@ -6,47 +6,22 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:42:53 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/17 20:12:30 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/19 16:54:01 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char	*ft_add_front(char *str, int add)
+void	ft_second_ajust(void)
 {
-	char	*dest;
-	int		size;
-	int		i;
-	int		j;
-
-	size = ft_strlen(str) + 1 + add;
-	if (!(dest = (char *)malloc(sizeof(char) * size)))
-		return (NULL);
-	i = 0;
-	while (add--)
-		dest[i] = var.add_char;
-	j = -1;
-	while (str[++j])
-		dest[i++] = str[j];
-	dest[size] = 0;
-	return (dest);
-}
-
-char	*ft_add_back(char *str, int add)
-{
-	char	*dest;
-	int		size;
-	int		i;
-	int		j;
-
-	size = ft_strlen(str) + 1 + add;
-	if (!(dest = (char *)malloc(sizeof(char) * size)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dest[i] = str[i];
-	while (dest[i++])
-		dest[i] = var.add_char;
-	dest[size] = 0;
-	return (dest);
+	if (var.prec[0] < 0)
+	{
+		var.flag[0] = 0;
+		var.prec[0] = 0;
+	}
+	if (var.prec[1] < 0)
+	{
+		var.flag[1] = 0;
+		var.prec[1] = 1;
+	}
 }

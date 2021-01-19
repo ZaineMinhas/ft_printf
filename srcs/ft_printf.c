@@ -6,40 +6,36 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/14 14:53:18 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/19 16:53:40 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_percent_all(const char *format)
+int		ft_percent_all(int percent)
 {
-	if (*format == 'd' || *format == 'i')
+	if (percent == 2)
 		return (ft_percent_d_and_i(va_arg(var.args, int)));
-	else if (*format == 'u')
+	else if (percent == 5)
 		return (ft_percent_u(va_arg(var.args, unsigned int)));
-	else if (*format == 'x')
+	else if (percent == 6)
 		return (ft_percent_x(va_arg(var.args, unsigned int)));
-	else if (*format == 'X')
+	else if (percent == 7)
 		return (ft_percent_xcap(va_arg(var.args, unsigned int)));
-	else if (*format == 'c')
+	else if (percent == 1)
 		return (ft_percent_c(va_arg(var.args, int)));
-	else if (*format == 's')
+	else if (percent == 4)
 		return (ft_percent_s(va_arg(var.args, char *)));
-	else if (*format == 'p')
+	else if (percent == 3)
 		return (ft_percent_p(va_arg(var.args, void *)));
-	else if (*format == '%')
-	{
-		write(1, "%", 1);
-		return (1);
-	}
+	else if (percent == 8)
+		return(ft_percent_c('%'));
 	return (0);
 }
 
 void	ft_reset(void)
 {
 	var.total = 0;
-	var.add_char = NULL;
 	var.flag[0] = 0;
 	var.flag[1] = 0;
 	var.prec[0] = 0;
@@ -49,15 +45,16 @@ void	ft_reset(void)
 
 int		ft_check_all(const char *format)
 {
-	if (ft_flag_checker(format))
+	if (ft_flag_checker(&format))
 		ft_ajust_var();
-	ft_flag_error(format);
+	if (ft_flag_error(format))
+		return (-1);
+	ft_second_ajust();
+	return (ft_percent_all(var.percent));
 }
 
 int		ft_printf(const char *format, ...)
 {
-	va_list args;
-
 	if (!format)
 		return (0);
 	ft_reset();

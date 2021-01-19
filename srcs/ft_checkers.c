@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 18:36:31 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/14 18:08:27 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/19 16:43:03 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ int	ft_get_flag_value(const char **format, int i)
 {
 	if (var.flag[i] != 3)
 		(*format)++;
-	return (ft_atoi_remix(*format));
+	return (ft_atoi_remix(format));
 }
 
-int	ft_flag_checker(const char *format)
+int	ft_flag_checker(const char **format)
 {
 	int i;
 
 	i = -1;
 	while (++i < 2)
 	{
-		if (*format == '0')
+		if (*(*format) == '0')
 			var.flag[i] = 1;
-		else if (*format == '-')
+		else if (*(*format) == '-')
 			var.flag[i] = 2;
-		else if (*format == '.')
+		else if (*(*format) == '.')
 			var.flag[i] = 4;
-		else if (*format == '*' || ft_isdigit((int)*format))
+		else if (*(*format) == '*' || ft_isdigit((int)*(*format)))
 			var.flag[i] = 3;
 		if (var.flag[i])
-			var.prec[i] = ft_get_flag_value(&format, i);
+			var.prec[i] = ft_get_flag_value(format, i);
 	}
 	if (var.flag[0])
 		return (1);
@@ -50,8 +50,5 @@ int	ft_flag_error(const char *format)
 		return (1);
 	if (var.flag[0] && (var.flag[0] == var.flag[1]))
 		return (1);
-	if (/* quel flag va avec quel type */1)
-		return (1);
-	// a suivre. . .
 	return (0);
 }

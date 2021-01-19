@@ -318,7 +318,7 @@ int	main(void)
 {
 	// char format[100] = "045.2d";
 	// ft_test(format, 12, 56);
-	printf("%033s", "salut");
+	printf("%0*s", 10, "salut");
 	return (0);
 }
 

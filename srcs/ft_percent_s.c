@@ -6,16 +6,17 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:54:26 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/18 14:48:04 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/19 16:52:31 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int	ft_put_size_str(char *s, int size)
+static int	ft_put_dotsize_str(char *s, int index)
 {
-	if (!size)
-		size = ft_strlen(s);
+	int size;
+
+	size = var.prec[index] < (int)ft_strlen(s) ? ft_strlen(s) : var.prec[index];
 	write(1, s, size);
 	return (size);
 }
@@ -23,24 +24,23 @@ static int	ft_put_size_str(char *s, int size)
 static int	ft_dot_flag(char *str)
 {
 	int i;
+	int size;
 
 	if (!var.flag[1])
-	{
-		ft_put_size_str(str, var.prec[0]);
-		return (var.prec[0]);
-	}
+		return (ft_put_dotsize_str(str, 0));
 	else
 	{
 		i = 0;
+		size = var.prec[1] < (int)ft_strlen(str) ? ft_strlen(str) : var.prec[1];
 		if (var.flag[0] == 3)
-			while (i++ < var.prec[0] - ft_strlen(str))
+			while (i++ < var.prec[0] - ((int)ft_strlen(str) + size))
 				write(1, " ", 1);
 		else if (var.flag[0] == 1)
-			while (i++ < var.prec[0] - ft_strlen(str))
+			while (i++ < var.prec[0] - ((int)ft_strlen(str) + size))
 				write(1, "0", 1);
-		i += ft_put_size_str(str, var.prec[1]);
+		i += ft_put_dotsize_str(str, 1);
 		if (var.flag[0] == 2)
-			while (i++ < var.prec[0] - ft_strlen(str))
+			while (i++ < var.prec[0] - ((int)ft_strlen(str)))
 				write(1, " ", 1);
 		return (i);
 	}
