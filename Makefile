@@ -30,13 +30,13 @@ LIB_PATH	=	./libft
 
 .c.o:
 		@gcc -Wall -Wextra -Werror -c -I./ $< -o ${<:.c=.o}
+		@echo "${LIGHTPURPLE}Compilation of :$<${RESET}"
 
 $(NAME):	${OBJS}
 		@make full -C ${LIB_PATH}
 		@cp libft/libft.a ./${NAME}
 		@ar -rcs ${NAME} ${OBJS}
 		@ranlib ${NAME}
-		@clear
 		@echo "${GREEN}libftprintf.a created !${RESET}"
 
 
@@ -45,15 +45,17 @@ all:	${NAME}
 clean:
 		@rm -f ${OBJS}
 		@make clean -C ${LIB_PATH}
-		@clear
 		@echo "${YELLOW}Objects cleaned !${RESET}"
 
-fclean:		clean
+fclean:
+		@rm -f ${OBJS}
 		@rm -f ${NAME}
 		@make fclean -C ${LIB_PATH}
-		@clear
 		@echo "${RED}fclean done !${RESET}"
 
+allup:	re clean
+		@clear
+		
 re:			fclean all
 
 .PHONY:		all clean fclean re
