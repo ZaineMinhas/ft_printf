@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	printf("\nle faux : %d\n", ft_printf("salut %-12.1d", 123));
-	printf("\nle vrai : %d\n", printf("salut %-12.1d", 123));
+	printf("\nle faux : %d\n", ft_printf("salut %s", NULL));
+	printf("\nle vrai : %d\n", printf("salut %s", NULL));
 	return (0);
 }

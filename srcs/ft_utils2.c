@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:42:53 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/20 15:17:00 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/20 19:23:37 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_second_ajust(void)
 	if (var.prec[1] < 0)
 	{
 		var.flag[1] = 0;
-		var.prec[1] = 1;
+		var.prec[1] = 0;
 	}
 }
 

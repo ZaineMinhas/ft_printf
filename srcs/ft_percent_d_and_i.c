@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:31:21 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/20 18:42:28 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/20 19:21:36 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 static int ft_dot_flag(int n)
 {
 	int	i;
+	int j;
 	int	size;
 
 	i = 0;
-	size = 0;
-	if (var.flag[0] == 3)
-	while (i++ < var.prec[0] - ft_intlen(n))
-		write(1, " ", 1);
-	while (i++ < (var.prec[1] - ft_intlen(n)))
+	j = 0;
+	size = var.prec[1] > ft_intlen(n) ? var.prec[1] : ft_intlen(n);
+	if (var.flag[0] == 3 || var.flag[0] == 1)
+		while (i++ < var.prec[0] - size)
+			write(1, " ", 1);
+	while (j++ < (var.prec[1] - ft_intlen(n)))
 		write(1, "0", 1);
+	ft_putnbr_fd(n, 1);
 	if (var.flag[0] == 2)
-		while (i++ < ft_intlen(n))
+		while (i++ < var.prec[0] - size)
 			write(1, " ", 1);
 	return (size + (i ? --i : i));
 }
