@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/19 16:52:56 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/20 17:11:27 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef struct	s_listx
 {
@@ -38,7 +39,7 @@ void			ft_reset(void);
 ** Flags fonctions
 */
 
-int				ft_check_all(const char *format);
+int				ft_check_all(const char **format);
 int				ft_flag_checker(const char **format);
 int				ft_flag_error(const char *format);
 int				ft_get_flag_value(const char **format, int i);
@@ -67,5 +68,6 @@ int       		ft_index(char *s, char c);
 int				ft_atoi_remix(const char **str);
 void			ft_ajust_var(void);
 void			ft_second_ajust(void);
+void			ft_pass(const char **str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/19 16:53:40 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/20 17:11:44 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ void	ft_reset(void)
 	var.percent = 0;
 }
 
-int		ft_check_all(const char *format)
+int		ft_check_all(const char **format)
 {
-	if (ft_flag_checker(&format))
+	if (ft_flag_checker(format))
 		ft_ajust_var();
-	if (ft_flag_error(format))
+	if (ft_flag_error(*format))
 		return (-1);
 	ft_second_ajust();
+	format += 2;
 	return (ft_percent_all(var.percent));
 }
 
@@ -64,8 +65,7 @@ int		ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			var.total += ft_check_all(format);
-			format++;
+			var.total += ft_check_all(&format);
 		}
 		else
 		{
