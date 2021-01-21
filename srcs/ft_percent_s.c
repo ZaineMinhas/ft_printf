@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:54:26 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/21 17:45:27 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/21 19:41:09 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_put_dotsize_str_remix(char *s, int prec)
 	size = prec < (int)ft_strlen(s) ? prec : ft_strlen(s);
 	write(1, s, size);
 	if (size != (int)ft_strlen(s))
-	 	return (size - ft_strlen(s));
+		return (size - ft_strlen(s));
 	return (size);
 }
 
