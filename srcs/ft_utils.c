@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/19 14:56:40 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/21 18:47:00 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ void	ft_ajust_var(void)
 	}
 	if (var.flag[1] == 4 && var.prec[1] < 0)
 		var.prec[1] = -1;
+	if (var.flag[1] && var.flag[1] != 4)
+	{
+		var.flag[1] = 0;
+		var.prec[0] = var.prec[1];
+	}
 }
 
 int		ft_atoi_remix(const char **str)
