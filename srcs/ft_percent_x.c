@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 15:10:22 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 14:13:50 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 20:17:33 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ static	int	ft_dot_flag(unsigned int n, char *base, int i)
 		while (i++ < var.prec[0] - size)
 			write(1, " ", 1);
 	return (size + (i ? --i : i));
-	
 }
 
-int		ft_percent_x(unsigned int n, char *base)
+int			ft_percent_x(unsigned int n, char *base)
 {
 	int i;
 

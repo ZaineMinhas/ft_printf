@@ -6,13 +6,13 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:29:55 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/21 18:21:46 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 20:11:46 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_percent_c(int c)
+int	ft_percent_c(int c)
 {
 	int	i;
 

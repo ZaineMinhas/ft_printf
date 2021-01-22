@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:42:53 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/20 19:23:37 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 20:15:26 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_second_ajust(void)
 
 void	ft_pass(const char **str)
 {
-	while (ft_isdigit((int)*(*str)) || *(*str) == '-' || *(*str) == '*' || *(*str) == '.')
+	while (ft_isdigit((int)*(*str)) || *(*str) == '-'
+	|| *(*str) == '*' || *(*str) == '.')
 		(*str)++;
 }

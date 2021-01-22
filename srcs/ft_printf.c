@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 19:15:47 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 20:16:48 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int		ft_percent_all(int percent)
 	else if (percent == 5)
 		return (ft_percent_u(va_arg(var.args, unsigned int)));
 	else if (percent == 6)
-		return (ft_percent_x(va_arg(var.args, unsigned int), "0123456789abcdef"));
+		return (ft_percent_x(va_arg(var.args, unsigned int),
+		"0123456789abcdef"));
 	else if (percent == 7)
-		return (ft_percent_x(va_arg(var.args, unsigned int), "0123456789ABCDEF"));
+		return (ft_percent_x(va_arg(var.args, unsigned int),
+		"0123456789ABCDEF"));
 	else if (percent == 1)
 		return (ft_percent_c(va_arg(var.args, int)));
 	else if (percent == 4)
@@ -29,7 +31,7 @@ int		ft_percent_all(int percent)
 	else if (percent == 3)
 		return (ft_percent_p(va_arg(var.args, void *)));
 	else if (percent == 8)
-		return(ft_percent_percent());
+		return (ft_percent_percent());
 	return (0);
 }
 
