@@ -6,12 +6,11 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:20:37 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 19:03:55 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 19:10:02 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-#include <stdio.h>
 
 static	void	ft_putnbr_remix(unsigned int n)
 {

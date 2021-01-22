@@ -5,8 +5,8 @@
 
 int	main(void)
 {
-	printf("\nle faux : %d\n", ft_printf("|%06u|\n", 12345));
-	printf("\nle vrai : %d\n", printf("|%06u|\n", 12345));
+	printf("\nle faux : %d\n", ft_printf("|%-3.56%|\n"));
+	printf("\nle vrai : %d\n", printf("|%-3.56%|\n"));
 	return (0);
 }
 

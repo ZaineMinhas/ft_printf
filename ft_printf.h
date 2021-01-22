@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 13:27:53 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 19:11:33 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				ft_percent_s(char *str);
 int				ft_percent_p(void *adrs);
 int				ft_percent_x(unsigned int n, char *base);
 int				ft_percent_xcap(unsigned int n);
+int				ft_percent_percent(void);
 
 /*
 ** Additional fonctions

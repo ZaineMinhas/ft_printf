@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 13:29:48 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 19:15:47 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_percent_all(int percent)
 	else if (percent == 3)
 		return (ft_percent_p(va_arg(var.args, void *)));
 	else if (percent == 8)
-		return(ft_percent_c('%'));
+		return(ft_percent_percent());
 	return (0);
 }
 
