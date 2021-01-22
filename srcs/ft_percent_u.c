@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:20:37 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/21 16:00:04 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/22 19:03:55 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	int		ft_intlen_remix(unsigned int n)
 	return (++len);
 }
 
-int				ft_percent_u(int n)
+static int		ft_put_ui_nbr(int n)
 {
 	if (n > 0)
 	{
@@ -39,4 +39,43 @@ int				ft_percent_u(int n)
 	}
 	ft_putnbr_remix(UINT_MAX + n + 1);
 	return (ft_intlen_remix(UINT_MAX + n + 1));
+}
+
+static int		ft_dot_flag(int n, int i)
+{
+	int size;
+	int j;
+
+	j = 0;
+	size = var.prec[1] < ft_intlen_remix(n) ? ft_intlen_remix(n) : var.prec[1];
+	if (var.flag[0] == 1 || var.flag[0] == 3)
+		while (i++ < var.prec[0] - size)
+			write(1, " ", 1);
+	while (j++ < var.prec[1] - ft_intlen_remix(n))
+		write(1, "0", 1);
+	ft_put_ui_nbr(n);
+	if (var.flag[0] == 2)
+		while (i++ < var.prec[0] - size)
+			write(1, " ", 1);
+	return (ft_intlen_remix(UINT_MAX + n + 1) + (i ? --i : i) + (--j));
+}
+
+int				ft_percent_u(int n)
+{
+	int i;
+
+	i = 0;
+	if (var.flag[1])
+		return (ft_dot_flag(n, i));
+	if (var.flag[0] == 1 || var.flag[0] == 4)
+		while (i++ < var.prec[0] - ft_intlen_remix(n))
+			write(1, "0", 1);
+	else if (var.flag[0] == 3)
+		while (i++ < var.prec[0] - ft_intlen_remix(n))
+			write(1, " ", 1);
+	ft_put_ui_nbr(n);
+	if (var.flag[0] == 2)
+		while (i++ < var.prec[0] - ft_intlen_remix(n))
+			write(1, " ", 1);
+	return (ft_intlen_remix(UINT_MAX + n + 1) + (i ? --i : i));
 }
