@@ -5,8 +5,12 @@
 
 int	main(void)
 {
-	printf("\nle faux : %d\n", ft_printf("|%-3.56%|\n"));
-	printf("\nle vrai : %d\n", printf("|%-3.56%|\n"));
+	char *str = "salut";
+	char **ptr;
+
+	ptr = &str;
+	printf("\nle faux : %d\n", ft_printf("|%30.23p|\n", ptr));
+	printf("\nle vrai : %d\n", printf("|%30.23p|\n", ptr));
 	return (0);
 }
 
