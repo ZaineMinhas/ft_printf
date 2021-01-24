@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:31:21 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/21 19:39:42 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/24 16:49:21 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int		ft_dot_flag(unsigned int nb, int i, int pos_neg)
 
 	j = 0;
 	size = var.prec[1] < ft_intlen(nb) ? ft_intlen(nb) : var.prec[1];
+	!(!nb && var.prec[1] == 0) ? write(1, "", 0) : size--;
 	if (var.flag[0] == 1 || var.flag[0] == 3)
 		while (i++ < var.prec[0] - size)
 			write(1, " ", 1);
@@ -33,7 +34,7 @@ static int		ft_dot_flag(unsigned int nb, int i, int pos_neg)
 		write(1, "-", 1);
 	while (j++ < var.prec[1] - ft_intlen(nb))
 		write(1, "0", 1);
-	ft_putnbr_remix(nb);
+	!(!nb && var.prec[1] == 0) ? ft_putnbr_remix(nb) : write(1, "", 0);
 	if (var.flag[0] == 2)
 		while (i++ < var.prec[0] - size)
 			write(1, " ", 1);
@@ -66,6 +67,7 @@ int				ft_percent_d_and_i(int n)
 {
 	unsigned int	nb;
 	int				pos_neg;
+	int				size;
 	int				i;
 
 	i = 0;
@@ -78,12 +80,13 @@ int				ft_percent_d_and_i(int n)
 	}
 	else
 		nb = n;
+	size = ft_intlen(nb) + pos_neg;
 	if (var.flag[1])
 		return (ft_dot_flag(nb, i, pos_neg));
 	i = ft_first_flag(nb, i, pos_neg);
-	ft_putnbr_remix(n);
+	!(!nb && var.flag[0] == 4 && var.prec[0] == 0) ? ft_putnbr_remix(nb) : size--;
 	if (var.flag[0] == 2)
 		while (i++ < var.prec[0] - ft_intlen(nb))
 			write(1, " ", 1);
-	return (ft_intlen(nb) + (i ? --i : i));
+	return (size + (i ? --i : i));
 }

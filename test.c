@@ -5,12 +5,12 @@
 
 int	main(void)
 {
-	char *str = "salut";
+	char *str = "0-23";
 	char **ptr;
 
 	ptr = &str;
-	printf("\nle faux : %d\n", ft_printf("|%30.23p|\n", ptr));
-	printf("\nle vrai : %d\n", printf("|%30.23p|\n", ptr));
+	printf("\nle faux : %d\n", ft_printf("|%-.x|\n", 0));
+	printf("\nle vrai : %d\n", printf("|%-.x|\n", 0));
 	return (0);
 }
 

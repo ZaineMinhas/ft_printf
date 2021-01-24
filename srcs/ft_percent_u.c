@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:20:37 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 19:10:02 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/24 15:33:34 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,34 +47,38 @@ static int		ft_dot_flag(int n, int i)
 
 	j = 0;
 	size = var.prec[1] < ft_intlen_remix(n) ? ft_intlen_remix(n) : var.prec[1];
-	if (var.flag[0] == 1 || var.flag[0] == 3)
+	!(!n && var.prec[1] == 0) ? write(1, "", 0) : i--;
+	if ((var.flag[0] == 1 || var.flag[0] == 3))
 		while (i++ < var.prec[0] - size)
 			write(1, " ", 1);
 	while (j++ < var.prec[1] - ft_intlen_remix(n))
 		write(1, "0", 1);
-	ft_put_ui_nbr(n);
+	!(!n && var.prec[1] == 0) ? ft_put_ui_nbr(n) : write(1, "", 0);
 	if (var.flag[0] == 2)
 		while (i++ < var.prec[0] - size)
 			write(1, " ", 1);
-	return (ft_intlen_remix(UINT_MAX + n + 1) + (i ? --i : i) + (--j));
+	var.prec[0] == 0 && var.prec[1] == 0 ? i-- : write(1, "", 0);
+	return (ft_intlen_remix(UINT_MAX + n + 1) + (i > 0 ? --i : i) + (--j));
 }
 
 int				ft_percent_u(int n)
 {
+	int size;
 	int i;
 
 	i = 0;
 	if (var.flag[1])
 		return (ft_dot_flag(n, i));
+	size = ft_intlen_remix(UINT_MAX + n + 1);
 	if (var.flag[0] == 1 || var.flag[0] == 4)
 		while (i++ < var.prec[0] - ft_intlen_remix(n))
 			write(1, "0", 1);
 	else if (var.flag[0] == 3)
 		while (i++ < var.prec[0] - ft_intlen_remix(n))
 			write(1, " ", 1);
-	ft_put_ui_nbr(n);
+	!(!n && var.flag[0] == 4 && var.prec[0] == 0) ? ft_put_ui_nbr(n) : size--;
 	if (var.flag[0] == 2)
 		while (i++ < var.prec[0] - ft_intlen_remix(n))
 			write(1, " ", 1);
-	return (ft_intlen_remix(UINT_MAX + n + 1) + (i ? --i : i));
+	return (size + (i ? --i : i));
 }
