@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 15:10:22 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/24 17:52:21 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/24 18:04:41 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int			ft_percent_x(unsigned int n, char *base)
 	else if (var.flag[0] == 3)
 		while (i++ < var.prec[0] - ft_hexlen(n))
 			write(1, " ", 1);
-	!(!n && var.flag[0] == 4 && var.prec[0] == 0) ? ft_putnbr_x(n, base) : size--;
+	!(!n && var.flag[0] == 4 && var.prec[0] == 0) ?
+	ft_putnbr_x(n, base) : size--;
 	if (var.flag[0] == 2)
 		while (i++ < var.prec[0] - ft_hexlen(n))
 			write(1, " ", 1);

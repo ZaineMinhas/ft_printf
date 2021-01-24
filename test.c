@@ -9,8 +9,8 @@ int	main(void)
 	char **ptr;
 
 	ptr = &str;
-	printf("\nle faux : %d\n", ft_printf("|%-.x|\n", 0));
-	printf("\nle vrai : %d\n", printf("|%-.x|\n", 0));
+	printf("\nle faux : %d\n", ft_printf("%% *.5i 42 == |%*.5i|", 4, 42));
+	printf("\nle vrai : %d\n", printf("%% *.5i 42 == |%*.5i|", 4, 42));
 	return (0);
 }
 
