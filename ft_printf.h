@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/22 19:11:33 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/24 18:55:30 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-typedef struct	s_listx
+typedef struct	s_list
 {
 	va_list		args;
 	int			total;
 	int			flag[2];
 	int			prec[2];
 	int			percent;
-}				t_listx;
+}				t_list;
 
-t_listx			var;
+t_list			var;
 
 /*
 ** Main fonctions

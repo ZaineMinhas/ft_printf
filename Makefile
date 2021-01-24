@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zminhas <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 15:48:49 by zminhas           #+#    #+#              #
-#    Updated: 2020/12/02 13:34:14 by zminhas          ###   ########.fr        #
+#    Updated: 2021/01/24 18:50:01 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIB_PATH	=	./libft
 		@echo "${LIGHTPURPLE}Compilation of :$<${RESET}"
 
 $(NAME):	${OBJS}
-		@make full -C ${LIB_PATH}
+		@make -C ${LIB_PATH}
 		@cp libft/libft.a ./${NAME}
 		@ar -rcs ${NAME} ${OBJS}
 		@ranlib ${NAME}
