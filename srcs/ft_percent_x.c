@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 15:10:22 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/24 18:04:41 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/24 18:18:32 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	ft_putnbr_x(unsigned int n, char *base)
 		n /= 16;
 	}
 	ft_putstr_fd(res, 1);
+	free((void *)res);
 	return (i);
 }
 
