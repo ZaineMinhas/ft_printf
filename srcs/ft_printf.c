@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:44:02 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/25 17:38:24 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/25 18:33:12 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_percent_all(int percent)
 {
 	if (percent == 2)
-		return (ft_percent_d_and_i(va_arg(g_args, int)));
+		return (ft_percent_d_and_i(g_nb));
 	else if (percent == 5)
 		return (ft_percent_u(va_arg(g_args, unsigned int)));
 	else if (percent == 6)
@@ -43,6 +43,7 @@ void	ft_reset(void)
 	g_prec[0] = 0;
 	g_prec[1] = 0;
 	g_percent = 0;
+	g_nb = 0;
 }
 
 int		ft_check_all(const char **format)

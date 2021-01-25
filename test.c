@@ -27,10 +27,11 @@ int	main(void)
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
-	//printf("\nle faux : %d\n", ft_printf("%-1d", d));
-	//printf("\nle vrai : %d\n", printf("%-1d", d));
-	//printf(" --- Return : %d\n", printf("\n%-1.i, %-1.d, %-1.d, %-1.d, %-1.d, %-1.d, %-1d, %-1d", i, j, k, l, m, c, e, d)); //T28
-	//printf(" --- Return : %d\n", ft_printf("\n%-1.i, %-1.d, %-1.d, %-1.d, %-1.d, %-1.d, %-1.d, %-1d", i, j, k, l, m, c, e, d)); //T28
+	//printf("\nle faux : %d\n", ft_printf("%3s", NULL));
+	//printf("\nle vrai : %d\n", printf("%3s", NULL));
+	printf(" --- Return : %d\n", ft_printf("%3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL));
+	printf("\n\n//////////////////////////////////////////////\n\n");
+	printf(" --- Return : %d\n", printf("%3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL));
 	return (0);
 }
 

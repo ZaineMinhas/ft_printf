@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/25 17:44:14 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/25 18:32:05 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int			g_total;
 int			g_flag[2];
 int			g_prec[2];
 int			g_percent;
+int			g_nb;
 
 /*
 ** Main fonctions
