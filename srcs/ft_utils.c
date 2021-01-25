@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/24 14:42:03 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/25 17:39:06 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,43 @@ int		ft_ispercent(int c)
 	return (0);
 }
 
-int		ft_index(char *s, char c)
-{
-	int i;
-
-	if (!s)
-		return (-1);
-	i = -1;
-	while (s[++i] && !ft_ispercent((int)s[i]))
-		if (s[i] == c)
-			return (i);
-	return ((s[i] == c) ? i : -1);
-}
-
 void	ft_ajust_var(void)
 {
-	if (var.flag[0])
+	if (g_flag[0])
 	{
-		if ((var.flag[0] == 1 || var.flag[0] == 3) && var.prec[0] < 0)
+		if ((g_flag[0] == 1 || g_flag[0] == 3) && g_prec[0] < 0)
 		{
-			var.flag[0] = 2;
-			var.prec[0] *= -1;
+			g_flag[0] = 2;
+			g_prec[0] *= -1;
 		}
-		if (var.flag[0] == 2 && var.prec[0] < 0)
+		if (g_flag[0] == 2 && g_prec[0] < 0)
 		{
-			var.flag[0] = 2;
-			var.prec[0] *= -1;
+			g_flag[0] = 2;
+			g_prec[0] *= -1;
 		}
-		if (var.flag[0] == 4 && var.prec[0] < 0)
-			var.prec[0] = -1;
+		if (g_flag[0] == 4 && g_prec[0] < 0)
+			g_prec[0] = -1;
 	}
-	if (var.flag[1] == 4 && var.prec[1] < 0)
-		var.prec[1] = -1;
-	if (var.flag[1] && var.flag[1] != 4)
+	if (g_flag[1] == 4 && g_prec[1] < 0)
+		g_prec[1] = -1;
+	if (g_flag[1] && g_flag[1] != 4)
 	{
-		var.flag[1] = 0;
-		var.prec[0] = var.prec[1];
+		g_flag[1] = 0;
+		g_prec[0] = g_prec[1];
+	}
+}
+
+void	ft_second_ajust(void)
+{
+	if (g_prec[0] < 0)
+	{
+		g_flag[0] = 0;
+		g_prec[0] = 0;
+	}
+	if (g_prec[1] < 0)
+	{
+		g_flag[1] = 0;
+		g_prec[1] = 0;
 	}
 }
 
@@ -88,7 +89,7 @@ int		ft_atoi_remix(const char **str)
 	if (*(*str) == '*')
 	{
 		(*str)++;
-		return (va_arg(var.args, int));
+		return (va_arg(g_args, int));
 	}
 	nb = 0;
 	while (*(*str) >= '0' && *(*str) <= '9' && *(*str))

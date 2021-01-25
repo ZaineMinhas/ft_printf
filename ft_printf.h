@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/24 18:55:30 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/25 17:44:14 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-typedef struct	s_list
-{
-	va_list		args;
-	int			total;
-	int			flag[2];
-	int			prec[2];
-	int			percent;
-}				t_list;
-
-t_list			var;
+va_list		g_args;
+int			g_total;
+int			g_flag[2];
+int			g_prec[2];
+int			g_percent;
 
 /*
 ** Main fonctions
@@ -34,12 +29,13 @@ t_list			var;
 
 int				ft_printf(const char *format, ...);
 void			ft_reset(void);
+int				ft_check_all(const char **format);
+int				ft_percent_all(int percent);
 
 /*
 ** Flags fonctions
 */
 
-int				ft_check_all(const char **format);
 int				ft_flag_checker(const char **format);
 int				ft_flag_error(const char *format);
 int				ft_get_flag_value(const char **format, int i);
@@ -48,7 +44,6 @@ int				ft_get_flag_value(const char **format, int i);
 ** Percent fonctions
 */
 
-int				ft_percent_all(int percent);
 int				ft_percent_d_and_i(int d);
 int				ft_percent_u(int n);
 int				ft_percent_c(int c);
@@ -63,12 +58,15 @@ int				ft_percent_percent(void);
 */
 
 int				ft_intlen(int n);
+int				ft_intlen_ui(unsigned int n);
 int				ft_hexlen(unsigned int n);
+int				ft_hexlen_ul(unsigned long n);
 int				ft_ispercent(int c);
-int       		ft_index(char *s, char c);
 int				ft_atoi_remix(const char **str);
 void			ft_ajust_var(void);
 void			ft_second_ajust(void);
-void			ft_pass(const char **str);
+int				ft_putnbr_ui(int n);
+void			ft_putnbr_remix(unsigned int n);
+int				ft_putstr_size(char *s, int prec);
 
 #endif
