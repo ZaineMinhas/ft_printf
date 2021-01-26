@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:31:21 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/25 17:34:29 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/26 19:23:56 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				ft_percent_d_and_i(int n)
 	if (g_flag[1])
 		return (ft_dot_flag(nb, i, pos_neg));
 	i = ft_first_flag(nb, i, pos_neg);
-	!(!nb && g_flag[0] == 4 && g_prec[0] == 0) ?
+	!(!nb && g_flag[0] == 4 && !g_prec[0]) ?
 	ft_putnbr_remix(nb) : size--;
 	if (g_flag[0] == 2)
 		while (i++ < g_prec[0] - ft_intlen_ui(nb) - pos_neg)

@@ -26,12 +26,10 @@ int	main(void)
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
+	char	**v = &o;
 
-	printf("\nle faux : %d\n", ft_printf("%-12.8s, %d", NULL, 2));
-	printf("\nle vrai : %d\n", printf("%-12.8s, %d", NULL, 2));
-	//printf(" --- Return : %d\n", ft_printf("%-8.12s, %3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL));
-	//printf("\n\n//////////////////////////////////////////////\n\n");
-	//printf(" --- Return : %d\n", printf("%-8.12s, %3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL));
+	printf("\nle faux : %d\n", ft_printf("%2.9p", NULL));
+	printf("\nle vrai : %d\n", printf("%2.9p", NULL));
 	return (0);
 }
 
