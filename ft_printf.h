@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 13:12:41 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/25 18:32:05 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:10:20 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 # include <stdio.h>
 
 va_list		g_args;
-int			g_total;
 int			g_flag[2];
 int			g_prec[2];
 int			g_percent;
-int			g_nb;
 
 /*
 ** Main fonctions

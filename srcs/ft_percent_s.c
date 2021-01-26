@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:54:26 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/25 17:35:34 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:14:04 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int			ft_percent_s(char *str)
 	int size;
 	int i;
 
+	if (g_flag[0] == 4 && g_prec[0] == 0)
+		return (0);
 	i = 0;
 	if (!str)
 		str = "(null)";
