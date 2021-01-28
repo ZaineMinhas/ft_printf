@@ -6,7 +6,7 @@
 #    By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 15:48:49 by zminhas           #+#    #+#              #
-#    Updated: 2021/01/24 18:50:01 by zminhas          ###   ########.fr        #
+#    Updated: 2021/01/28 14:44:22 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,21 @@ BLUE		= $(shell tput -Txterm setaf 6)
 WHITE		= $(shell tput -Txterm setaf 7)
 RESET		= $(shell tput -Txterm sgr0)
 
-SRCS	=	$(shell ls srcs/ | grep -E ".+\.c")
+SRCS	=	srcs/ft_checkers.c\
+			srcs/ft_hexlen.c\
+			srcs/ft_intlen.c\
+			srcs/ft_percent_c.c\
+			srcs/ft_percent_d_and_i.c\
+			srcs/ft_percent_p.c\
+			srcs/ft_percent_percent.c\
+			srcs/ft_percent_s.c\
+			srcs/ft_percent_u.c\
+			srcs/ft_percent_x.c\
+			srcs/ft_printf.c\
+			srcs/ft_utils.c\
+			srcs/ft_utils2.c
 
-OBJS	=	$(addprefix srcs/, ${SRCS:.c=.o})
+OBJS	=	${SRCS:.c=.o}
 
 NAME	=	libftprintf.a
 
@@ -58,4 +70,4 @@ allup:	re clean
 		
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re allup
