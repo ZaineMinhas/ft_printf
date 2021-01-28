@@ -6,7 +6,7 @@
 #    By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 18:35:49 by zminhas           #+#    #+#              #
-#    Updated: 2021/01/24 18:53:39 by zminhas          ###   ########.fr        #
+#    Updated: 2021/01/28 14:54:36 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,13 @@ BLUE		= $(shell tput -Txterm setaf 6)
 WHITE		= $(shell tput -Txterm setaf 7)
 RESET		= $(shell tput -Txterm sgr0)
 
-SRCS	=	ft_atoi.c\
-			ft_bzero.c\
+SRCS	=	ft_bzero.c\
 			ft_calloc.c\
 			ft_isdigit.c\
-			ft_itoa.c\
 			ft_putchar_fd.c\
 			ft_putendl_fd.c\
 			ft_putnbr_fd.c\
 			ft_putstr_fd.c\
-			ft_strdup.c\
 			ft_strlen.c\
 
 OBJS	=	${SRCS:.c=.o}
