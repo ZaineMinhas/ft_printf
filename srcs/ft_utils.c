@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 18:34:59 by zminhas           #+#    #+#             */
-/*   Updated: 2021/01/26 17:10:54 by zminhas          ###   ########.fr       */
+/*   Updated: 2021/02/25 15:58:28 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		ft_atoi_remix(const char **str)
 	if (*(*str) == '*')
 	{
 		(*str)++;
-		return (va_arg(g_args, int));
+		return (pos_neg * va_arg(g_args, int));
 	}
 	nb = 0;
 	while (*(*str) >= '0' && *(*str) <= '9' && *(*str))
